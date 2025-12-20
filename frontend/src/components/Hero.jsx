@@ -34,7 +34,7 @@ const Hero = () => {
                             <div className="stat-row">
                                 <div className="stat-box">
                                     <span className="label">Hostels</span>
-                                    <span className="value">3</span>
+                                    <span className="value">4</span>
                                 </div>
                                 <div className="stat-box">
                                     <span className="label">Students</span>
