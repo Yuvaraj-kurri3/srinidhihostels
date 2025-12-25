@@ -15,12 +15,13 @@ const AdminDashboard = () => {
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [currentStudent, setCurrentStudent] = useState(null);
     const [updateLoading, setUpdateLoading] = useState(false);
+    const Api="https://srinidhihostelsbackend.onrender.com/";
 
     useEffect(() => {
         // Fetch students from backend
         const fetchStudents = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/students/allstudents');
+                const response = await axios.get(`${Api}api/students/allstudents`);
                 console.log(response);
                 if (response.status == 200) {
                     setStudents(response.data.data);
@@ -55,7 +56,7 @@ const AdminDashboard = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this student?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/students/deletestudent/${id}`);
+                await axios.delete(`${Api}api/students/deletestudent/${id}`);
                 setDeleted(true);
                 setTimeout(() => setDeleted(false), 3000);
                 //refresh the after deletion
@@ -75,10 +76,10 @@ const AdminDashboard = () => {
         e.preventDefault();
         setUpdateLoading(true);
         try {
-            await axios.put(`http://localhost:5000/api/students/updatestudent/${currentStudent._id}`, currentStudent);
+            await axios.put(`${Api}api/students/updatestudent/${currentStudent._id}`, currentStudent);
             setEditModalOpen(false);
             // Refresh student list
-            const response = await axios.get('http://localhost:5000/api/students/allstudents');
+            const response = await axios.get(`${Api}api/students/allstudents`);
             if (response.status === 200) {
                 setStudents(response.data.data);
             }

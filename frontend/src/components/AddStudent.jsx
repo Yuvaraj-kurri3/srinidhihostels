@@ -23,6 +23,7 @@ export default function AddStudent() {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
   const [user,setUser]=useState(null);
+  const Api="https://srinidhihostelsbackend.onrender.com/";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +55,7 @@ export default function AddStudent() {
     setTimeout(async () => {
       setSubmitting(false);
       try {
-        await axios.post('http://localhost:5000/api/students/addnewstudent', {
+        await axios.post(`${Api}api/students/addnewstudent`, {
           RoomNumber: form.RoomNumber,
           Sharing: form.Sharing,
           StartingDate: form.StartingDate,

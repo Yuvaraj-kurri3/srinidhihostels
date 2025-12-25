@@ -65,7 +65,7 @@ const Register = () => {
                 if(formData.Role==='student'){
 
 
-                  await axios.post('http://localhost:5000/api/students/studentregistration', {
+                  await axios.post('https://srinidhihostelsbackend.onrender.com/api/students/studentregistration', {
                         StudentRoomNumber: formData.StudentRoomNumber, // Placeholder, adjust as needed
                         StudentName: formData.StudentName,
                         email: formData.email,
@@ -75,7 +75,7 @@ const Register = () => {
 
                  }else{
 
-                      await axios.post('http://localhost:5000/api/students/studentregistration', {
+                      await axios.post('https://srinidhihostelsbackend.onrender.com/api/students/studentregistration', {
                          StudentRoomNumber: '001', // Management doesn't need room number
                         StudentName: formData.StudentName,
                         email: formData.email,

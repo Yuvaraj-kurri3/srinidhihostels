@@ -29,6 +29,7 @@ const StudentDashboard = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const Api="https://srinidhihostelsbackend.onrender.com/";
 
     useEffect(() => {
         const checkLogin = () => {
@@ -56,7 +57,7 @@ const StudentDashboard = () => {
             try {
                 const email = user?.email;
                 if (email) {
-                    const response = await axios.get(`http://localhost:5000/api/students/getstudentbymail/${email}`);
+                    const response = await axios.get(`${Api}api/students/getstudentbymail/${email}`);
                     console.log('Student details response:', response);
                     if (response.status === 200 && response.data.data===null) {
                         alert("please add your data");
