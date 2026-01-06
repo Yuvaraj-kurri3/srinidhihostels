@@ -55,8 +55,7 @@ export const UpdateAllPaymentStatus=async(req,res)=>{
         console.log(`✅ Updated ${result.modifiedCount} students to Unpaid`);
         res.status(200).json({ message: 'All active students payment status updated to Unpaid' });
     
-        await mongoose.disconnect();
-        console.log("✅ Monthly payment reset completed.");
+         console.log("✅ Monthly payment reset completed.");
       } catch (error) {
         console.error("❌ Cron job failed:", error);
         res.status(500).json({ message: 'Something went wrong during the payment status update', error: error.message });

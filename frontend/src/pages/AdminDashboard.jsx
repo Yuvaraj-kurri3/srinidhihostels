@@ -20,6 +20,7 @@ const AdminDashboard = () => {
     const [SearchQuery, setSearchQuery] = useState('');
     const [unpaidlist, setUnpaidlist] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [updated,SetUpdated]=useState(false);
     const Api = api;
 
     useEffect(() => {
@@ -168,9 +169,11 @@ const AdminDashboard = () => {
 
         try {
             confirm('All payment statuses updated to Unpaid!');
-           const response= await axios.put(`${Api}/api/students/updateallpaymentstatus`, { withCredentials: true });
-            console.log(response.data.message);
-            // window.location.reload();
+           await axios.put(`${Api}/api/students/updateallpaymentstatus`, { withCredentials: true });
+            SetUpdated(true);
+            setTimeout(()=>{
+                window.location.reload();
+            },1500);
         } catch (error) {
             console.log('Error in updating all payment status:',error);
         }
@@ -213,7 +216,7 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </header>
-
+            {updated &&      <h2 className="section-payment md:text-center">Payment Status Updated!</h2>    }
             {/* Add Student Form */}
             <AddStudent />
 
